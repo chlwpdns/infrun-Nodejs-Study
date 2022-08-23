@@ -1,0 +1,47 @@
+import axios from 'axios';
+// import { LOGIN_USER, REGISTER_USER, AUTH_USER } from './types';
+
+export const LOGIN_USER = 'login_user';
+export const REGISTER_USER = 'register_user';
+export const AUTH_USER = 'auth_user';
+
+export function loginUser(dataToSubmit) {
+  // 백에서 가져온 모든데이터
+  const request = axios
+    .post('/api/users/login', dataToSubmit)
+    .then((response) => response.data);
+
+  // 리듀서한테 보내기
+  return {
+    type: LOGIN_USER,
+    payload: request,
+  };
+}
+
+export function registerUser(dataToSubmit) {
+  // 백에서 가져온 모든데이터
+  const request = axios
+    .post('/api/users/register', dataToSubmit)
+    .then((response) => response.data);
+
+  // 리듀서한테 보내기
+  return {
+    type: REGISTER_USER,
+    payload: request,
+  };
+}
+
+// 인증
+// get method 니까 body 부분이 필요가 없음 !
+export function auth(dataToubmit) {
+  // 백에서 가져온 모든데이터
+  const request = axios
+    .get('/api/users/auth')
+    .then((response) => response.data);
+
+  // 리듀서한테 보내기
+  return {
+    type: AUTH_USER,
+    payload: request,
+  };
+}
