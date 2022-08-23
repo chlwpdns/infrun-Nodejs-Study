@@ -1,0 +1,20 @@
+const express = require('express');
+const app = express();
+
+const port = 3002;
+
+const mongoose = require('mongoose');
+mongoose.connect(
+  'mongodb+srv://<username>:<password>@cluster0.odgn4ue.mongodb.net/?retryWrites=true&w=majority',
+  {
+    useNew,
+  }
+);
+
+app.get('/', (req, res) => {
+  res.send('Hello World!');
+});
+
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`);
+});

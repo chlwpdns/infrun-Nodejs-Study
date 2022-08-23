@@ -1,0 +1,18 @@
+import axios from 'axios';
+// import { LOGIN_USER, REGISTER_USER, AUTH_USER } from './types';
+
+export const LOGIN_USER = 'login_user';
+export const REGISTER_USER = 'register_user';
+
+export function registerUser(dataToSubmit) {
+  // 백에서 가져온 모든데이터
+  const request = axios
+    .post('/api/users/register', dataToSubmit)
+    .then((response) => response.data);
+
+  // 리듀서한테 보내기
+  return {
+    type: REGISTER_USER,
+    payload: request,
+  };
+}
